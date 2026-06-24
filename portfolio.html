@@ -123,16 +123,18 @@
         }
 
         .info-grid {
-            display: table;
+            display: flex;
+            flex-wrap: wrap;
             width: 100%;
             border-top: 1px solid var(--border-color);
             padding-top: 25px;
             margin-top: 20px;
+            gap: 10px;
         }
 
         .info-col {
-            display: table-cell;
-            width: 33.33%;
+            flex: 1 1 30%;
+            min-width: 140px;
             vertical-align: middle;
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -167,24 +169,24 @@
             line-height: 1.7;
         }
 
-        /* Two Column Layout */
+        /* Two Column Layout using flex for responsiveness */
         .main-layout {
-            display: table;
+            display: flex;
+            gap: 30px;
             width: 100%;
-            table-layout: fixed;
+            align-items: flex-start;
         }
 
         .left-side {
-            display: table-cell;
-            width: 63%;
+            flex: 1 1 60%;
             padding-right: 30px;
             vertical-align: top;
+            min-width: 220px;
         }
 
         .right-side {
-            display: table-cell;
-            width: 37%;
-            padding-left: 30px;
+            flex: 0 0 320px;
+            padding-left: 0;
             vertical-align: top;
         }
 
@@ -250,24 +252,27 @@
         }
 
         .card-header {
-            display: table;
+            display: flex;
             width: 100%;
             margin-bottom: 12px;
+            gap: 10px;
+            align-items: flex-start;
         }
 
         .card-title-box {
-            display: table-cell;
+            flex: 1 1 auto;
             vertical-align: top;
         }
 
         .card-date-box {
-            display: table-cell;
+            flex: 0 0 auto;
             text-align: right;
             vertical-align: top;
             color: var(--accent-cyan);
             font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
+            min-width: 80px;
         }
 
         .card h3 {
@@ -363,6 +368,30 @@
             padding-top: 25px;
             border-top: 1px solid var(--border-color);
             letter-spacing: 0.5px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .container { padding: 30px 16px; }
+            header { padding: 30px; }
+            .header-title h1 { font-size: 2.2rem; }
+            .header-title .subtitle { font-size: 1rem; letter-spacing: 2px; }
+            .left-side { padding-right: 0; }
+            .right-side { flex: 1 1 100%; }
+            .main-layout { flex-direction: column-reverse; }
+            .card-date-box { text-align: left; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 20px 12px; }
+            header { padding: 22px; border-radius: 16px; }
+            .header-title h1 { font-size: 1.6rem; }
+            .header-title .subtitle { font-size: 0.85rem; }
+            .profile-box { padding: 20px; }
+            section { padding: 20px; }
+            .tag { padding: 6px 10px; font-size: 0.85rem; }
+            .badge { padding: 5px 10px; font-size: 0.75rem; }
+            .info-grid { padding-top: 12px; }
+            .info-col { font-size: 0.9rem; }
         }
     </style>
 </head>
